@@ -1,0 +1,14 @@
+{
+    "url" : "https://testapi.open-platform.or.kr/",
+    "redirectURL" : "http://localhost:3000/authResult",
+    "APIKey" : "l7xxe77522123fb1413ca258b09770a3acbb",
+    "APISecret" : "21b035019e694216a7382dbb34b4a967",
+  
+    "name": "홍길동",
+    "bankCode": "097",
+    "finNum": "101600000169321934052424",
+    "serialnum": "0100000001",
+    "loginToken": "074c68d8-37be-4566-9c1a-ae06fff26ef3",
+    "quiryToken": "5a965cd7-0ec3-4312-a7aa-dc8da4838e18",
+    "transferToken": "f45f904a-c37e-4fb1-a9c9-2c74219f184c"
+  }

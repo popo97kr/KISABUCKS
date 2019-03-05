@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<title>Kisabucks</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Verdana">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo" rel="stylesheet">
+
+<script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+    crossorigin="anonymous">
+</script>
+<style>
+        html,
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          font-family: "Verdana", "Nanum Myeongjo", sans-serif
+        }
+      </style>
+      
+      <div class="w3-top">
+        <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+          <a href="/" class="w3-bar-item w3-button"><b>KISABUCKS</b> </a>
+          <!-- Float links to the right. Hide them on small screens -->
+          <div class="w3-right w3-hide-small">
+            <button class="w3-bar-item w3-button" id=logout>LOGOUT</button>
+      
+            <a href="http://localhost:3000/mypage" class="w3-bar-item w3-button">MYPAGE</a>
+          </div>
+        </div>
+      </div>
+
+    <!-- w3-content defines a container for fixed size centered content, 
+and is wrapped around the whole page content, except for the footer in this example -->
+    <div class="w3-content" style="max-width:1400px">
+        <div class="w3-container w3-padding-32"> </div>
+
+        <!-- Header -->
+        <div class="w3-container w3-center w3-padding-16">
+                <h1><b> 결제 </b></h1>
+            </div>
+    
+    
+            <!-- main -->
+            <div class="w3-container">
+    
+                <div class="w3-container w3-center">
+                    <table class="w3-table w3-centered">
+                        <thead>
+                            <th>
+                                <p class="w3-xlarge"><b>이미지</b></p>
+                            </th>
+                            <th class="text-center">
+                                <p class="w3-xlarge"><b>상품정보</b></p>
+                            </th>
+                            <th class="text-center">
+                                <p class="w3-xlarge"><b>수량</b></p>
+                            </th>
+                            <th class="text-center">
+                                <p class="w3-xlarge"><b>가격</b></p>
+                            </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                <%data.forEach(function(menu, index){ %>
+                                    <tr>
+                                        <td>
+                                            <div class="media">
+                                                <img class="media-object" src="<%=menu.menu_pic%>" style="width: 100px; height: 100px;">
+                                            </div>
+            
+                                        </td>
+                                        <td class="w3-centered">
+                                           
+                                            <strong>
+                                                <%=menu.menu_name%></strong>
+                                        </td>
+                                        <td><strong>1</strong></td>
+            
+                                        <td><strong>
+                                                <%=menu.menu_price%>원</strong></td>
+            
+                                        <input type="hidden" class="totalprice" value="<%=menu.menu_price%>">
+                                    </tr>
+                                    <%});%>   </tbody>
+                    </table>
+                </div>
+    
+    
+    
+                <div class="w3-display-container">
+    
+                    <hr class="w3-border">
+    
+                    <div class="w3-container w3-right-align">
+                        <div class="w3-container">
+                            <div class="w3-xlarge">Total</div>
+                            <div>
+                                    <h2>6800원</h2>
+                            </div>
+                            <!-- pay button -->
+                            <p><button id="payment" class="w3-button w3-white w3-padding w3-border"><b>결제하기</b></button></p>
+                        </div>
+                        <input type="hidden" id="mid" value="<%=data[0].mid%>">
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <footer class="w3-center w3-black w3-padding-16">
+            <!--<p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>-->
+            <p>Copyright (c) KISABUCKS All rights reserved. <br>본 사이트에서 사용된 리소스는 모두 오픈소스임을 밝힙니다</p>
+        </footer>
+        <!-- END w3-content -->
+    
+        <script>
+
+        $("#payment").click(function(){
+            var paid = 1;
+
+        $.ajax({
+
+            url: "/paid",
+            type: 'post',
+            dataType : 'json',
+            data:{
+
+                paid:paid   
+            },
+            success: function (data) {
+                    if(data == 1){
+						alert("주문 완료!\n340point 적립");
+						window.location.href = "http://localhost:3000/mypage"
+                    }
+                }
+            }) 
+        })
+    </script>
+</body>
+
+
+</html>

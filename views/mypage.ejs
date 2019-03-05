@@ -1,0 +1,228 @@
+<!DOCTYPE HTML>
+<!--
+   Prologue by HTML5 UP
+   html5up.net | @ajlkn
+   Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+   <head>
+      <title>MYPAGE</title>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+      <link rel="stylesheet" href="assets/css/main.css" />
+      <link rel="stylesheet" href="css/indexstyle.css">
+   </head>
+   <body class="is-preload">
+        <div class="w3-top">
+                <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+                  <a href="/" class="w3-bar-item w3-button"><b>KISABUCKS</b> </a>
+                  <!-- Float links to the right. Hide them on small screens -->
+                  <div class="w3-right w3-hide-small">
+                    <a href="/" class="w3-bar-item w3-button">HOME</a>
+                  </div>
+                </div>
+              </div>
+      <!-- Header -->
+         <div id="header">
+
+            <div class="top">
+
+               <!-- Logo -->
+                  <div id="logo">
+                      <h1 id="title">김로빈</h1>
+                     <p style="color:#ffb404">VIP</p>
+                  </div>
+
+               <!-- Nav -->
+                  <nav id="nav">
+                     <ul>
+                        <li><a href="#top" id="top-link"><span class="icon fa-home">주문내역</span></a></li>
+                        <li><a href="#portfolio" id="portfolio-link"><span class="icon fa-th">쿠폰</span></a></li>
+                        <li><a href="#about" id="about-link"><span class="icon fa-user">적립금</span></a></li>
+                        <li><a href="#memo" id="memo-link"><span class="icon fa-envelope">메모장</span></a></li>
+                     </ul>
+                  </nav>
+
+            </div>
+         </div>
+
+      <!-- Main -->
+         <div id="main">
+
+            <!-- Intro -->
+            
+               <section id="top" style="color:white">
+                   
+                  <div class="container" style="padding-top:8em">
+                    
+                        <header>
+                                <h1 style="font-size:60px; color:black" class="alt">홍길동님의 주문이 완료되었습니다!</h1>
+                                <hr>
+                                <h2 class="alt">홍길동님의 주문내역</h2>
+                                
+                        </header>
+                        <table class="w3-table w3-bordered w3-centered" style="color:black">
+                                <tr>
+                                    <th>카페</th><th>주문음료</th><th>수량</th><th>총가격</th>
+                                </tr>
+                                <tr>
+                                    <td>아사네</td><td>아이스 아메리카노</td><td>1</td><td>2800</td>
+                                </tr>
+                                <tr>
+                                    <td>아사네</td><td>유자차</td><td>1</td><td>4000</td>
+                                </tr>
+                            </table>
+
+                     
+
+                     <footer>
+                        <a href="/" class="button scrolly">지금 주문하러 가기</a>
+                     </footer>
+
+                  </div>
+               </section>
+
+            <!-- Portfolio -->
+               <section id="portfolio" class="two">
+                  <div class="container">
+
+                     <header>
+                        <h2>보유중인 쿠폰</h2>
+                     </header>
+
+                     <p></p>
+
+                     <div class="row">
+                        <div class="col-4 col-12-mobile">
+                           <article class="item">
+                              <a href="#" class="image fit"><img src="https://png.pngtree.com/element_origin_min_pic/16/08/10/1157aaa231377aa.jpg" alt="" /></a>
+                              <header>
+                                 <h3>아메리카노 1잔</h3>
+                              </header>
+                           </article>
+                           <article class="item">
+                              <a href="#" class="image fit"><img src="https://media.istockphoto.com/vectors/coffee-discount-coupon-or-gift-voucher-vector-template-vector-id510792946" alt="" /></a>
+                              <header>
+                                 <h3> 20% 할인쿠폰</h3>
+                              </header>
+                           </article>
+                        </div>
+                        <div class="col-4 col-12-mobile">
+                           <article class="item">
+                              <a href="#" class="image fit"><img src="https://media.istockphoto.com/vectors/coffee-discount-coupon-or-gift-voucher-vector-template-vector-id510792946" alt="" /></a>
+                              <header>
+                                 <h3>20% 할인쿠폰</h3>
+                              </header>
+                           </article>
+                           <article class="item">
+                              <a href="#" class="image fit"><img src="https://previews.123rf.com/images/kaisorn/kaisorn1507/kaisorn150700022/42610475-%EC%BB%A4%ED%94%BC-%EC%BF%A0%ED%8F%B0-%ED%95%A0%EC%9D%B8-%ED%85%9C%ED%94%8C%EB%A6%BF-%EB%94%94%EC%9E%90%EC%9D%B8.jpg" alt="" /></a>
+                              <header>
+                                 <h3>15% 할인쿠폰</h3>
+                              </header>
+                           </article>
+                       
+                       
+
+                  </div>
+               </section>
+
+            <!-- About Me -->
+               <section id="about" class="three">
+                  <div class="container">
+
+                     <header>
+                        <h2>현재 적립금</h2>
+                     </header>
+                     <p style="font-size:30px">270point</p>
+                     <p>------------------------------------------------------------------------</p>
+                     <p style="font-size:15px">적립금은 3000원부터 현금처럼 사용 가능합니다.</p>
+
+                  </div>
+               </section>
+
+               <section id="memo" class="four">
+                  <div class="container">
+
+                     <header>
+                        <h2>오늘의 커피</h2>
+                     </header>
+                    <div class="w3-container">
+                     <div class="w3-row-padding">
+                            <% for (var i = 0; i < 4; i++) { %>
+                            <div class="w3-third w3-container w3-margin-bottom">
+                            
+                              <div class="w3-container w3-white">
+                                <h5><b><%=results[i].cafe%></b></h5><hr><h6>평점 : <b><%=results[i].score%>점</b></h6>
+                                <p><%=results[i].memo%></p>
+                              </div>
+                             
+                            </div>
+                            <% } %>
+                          </div>
+                        </div>
+
+                    <div class="w3-container">
+                     <form method="post" action="#">
+                            <div class="row">
+                               <div class="col-6 col-12-mobile"><input type="text" id="name" placeholder="카페 이름/ 커피종류" /></div>
+                               <div class="col-6 col-12-mobile"><input type="text" id="score" placeholder="평점(1~10)" />
+                                </div>
+                               <div class="col-12">
+                                  <textarea id="msg" placeholder="커피 일기장"></textarea>
+                               </div>
+                               <div class="col-12">
+                                  <input type="submit" value="SAVE" />
+                           </div>
+                        </div>
+                     </form>
+                    </div>
+
+                  </div>
+               </section>
+
+         </div>
+
+      <!-- Footer -->
+         <div id="footer">
+
+            <!-- Copyright -->
+               <ul class="copyright">
+                  <li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+               </ul>
+
+         </div>
+
+      <!-- Scripts -->
+         <script src="assets/js/jquery.min.js"></script>
+         <script src="assets/js/jquery.scrolly.min.js"></script>
+         <script src="assets/js/jquery.scrollex.min.js"></script>
+         <script src="assets/js/browser.min.js"></script>
+         <script src="assets/js/breakpoints.min.js"></script>
+         <script src="assets/js/util.js"></script>
+         <script src="assets/js/main.js"></script>
+         <script>
+            $("#signupBtn").click(function(){
+                var inputname = $("#name").val();
+                var inputsc = $("#score").val();
+                var inputmsg = $("#msg").val();
+                $.ajax({
+                        url: '/memoput',
+                        type: 'post',
+                        dataType: 'json',
+                        data: {
+                            name : inputname,
+                            score : inputsc,
+                            msg : inputmsg
+                        },
+                        success: function (data) {
+                            if(data == 1){
+                                alert("기입완료");
+                                window.location.href = "http://localhost:3000/mypage#memo"
+                            }
+                        }
+                    })
+                });
+            </script>
+
+   </body>
+</html>

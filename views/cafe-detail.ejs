@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<title>Kisabucks</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Verdana'>
+<link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous">
+</script>
+
+<style>
+  html,
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Verdana", "Nanum Myeongjo", sans-serif
+  }
+</style>
+
+<body class="w3-white">
+
+  <div class="w3-top">
+    <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+      <a href="/" class="w3-bar-item w3-button"><b>KISABUCKS</b> </a>
+      <!-- Float links to the right. Hide them on small screens -->
+      <div class="w3-right w3-hide-small">
+        <button class="w3-bar-item w3-button" id=logout>LOGOUT</button>
+  
+        <a href="http://localhost:3000/mypage" class="w3-bar-item w3-button">MYPAGE</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page Container -->
+  <div class="w3-content w3-padding" style="max-width:1400px;">
+
+    <!-- The Grid -->
+    <div class="w3-row-padding w3-padding-64">
+
+      <!-- Left Column -->
+      <div class="w3-third">
+
+        <div class="w3-white w3-text-grey w3-card-4">
+          <div class="w3-container w3-text-black w3-padding">
+            <h3>
+                <%=data[0].cafe_name%>
+            </h3>
+          </div>
+          <div class="w3-container">
+            <img src="<%=data[0].cafe_pic%>" style="width:100%; height:400px" alt="사진">
+          </div>
+
+          <div class="w3-container">
+            <p><i class="fa fa-map-marker fa-fw w3-margin-right w3-large w3-text-black"></i>
+              <%=data[0].cafe_loc%>
+            </p>
+            <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-black"></i>
+              <%=data[0].cafe_number%>
+            </p>
+            <hr>
+
+            <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-black"></i>지도</b></p>
+            <div class="w3-container">
+              <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=56484f6049d78222ce116d7bf755b6c1&libraries=services,drawing"></script>
+
+              <div id="map" style="width:100%; height:400px"> </div>
+            </div>
+            <input type="hidden" id="lat" value=<%=data[0].cafe_lat%>></input>
+            <input type="hidden" id="lng" value=<%=data[0].cafe_lng%>></input>
+            <input type="hidden" id="locid" value=<%=data[0].cafe_locid%>></input>
+            <script>
+              var lat = $("#lat").val();
+              var lng = $("#lng").val();
+              var locid = $("#locid").val();
+
+              var imageSrc = "https://image.flaticon.com/icons/svg/447/447031.svg";
+              var imageSize = new daum.maps.Size(32, 32); // 마커이미지의 크기입니다
+              var imageOption = {
+                offset: new daum.maps.Point(16, 32)
+              }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+              var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize, imageOption)
+
+              var container = document.getElementById('map');
+              var options = {
+                center: new daum.maps.LatLng(lat, lng),
+                level: 3
+              };
+
+              var map = new daum.maps.Map(container, options);
+
+              var marker = new daum.maps.Marker({
+                position: map.getCenter(),
+                image: markerImage
+              })
+
+              marker.setMap(map);
+
+              var loclink = 'http://map.daum.net/link/map/' + locid
+
+              daum.maps.event.addListener(marker, 'click', function () {
+                window.open(loclink)
+              });
+            </script>
+
+
+            <br>
+          </div>
+        </div><br>
+
+        <!-- End Left Column -->
+      </div>
+
+      <!-- Right Column -->
+      <div class="w3-twothird">
+
+        <div class="w3-container w3-card w3-white w3-margin-bottom">
+          <div class="w3-container">
+            <div class="w3-container w3-padding">
+              <p class="w3-xlarge"><i class="fa fa-coffee fa-fw w3-margin-right w3-large w3-text-black"></i>
+                <b>메뉴</b></p>
+            </div>
+          </div>
+          <div class="w3-row-padding">
+              <form name="menu-order" id="menu-order">
+                  <%data.forEach(function(menu, index){  %>
+    
+                  <div id="menu<%=index%>" class="w3-quarter w3-container w3-margin w3-card w3-center w3-hover-opacity"
+                    style="width:240px;">
+                    <input type="checkbox" name="mid" value="<%=menu.mid%>">
+                    <img src="<%=menu.menu_pic%>" alt="coffee" style="width:100%; height:200px">
+                    </input>
+                    <div class="w3-container w3-white w3-padding">
+    
+                      <p id="menu-name<%=index%>"><b>
+                          <%=menu.menu_name%></b></p>
+                      <p id="menu-price<%=index%>">
+                        <%=menu.menu_price%>
+                      </p>
+    
+                    </div>
+                  </div>
+    
+                  <% }); %>
+                </form>
+              </div>
+          
+          <div class="w3-container w3-padding"></div>
+          <div class="w3-container w3-padding">
+              <div class="w3-display-container">
+                <button type="button" id="getorder" class="w3-display-right w3-button w3-white">결제</button>
+              </div>
+            </div>
+        </div>
+
+        <script>
+            //check button 가져오기
+            $("#getorder").click(function (){
+              
+              var menu_order = $("#menu-order").serialize();
+              var url = "http://localhost:3000/payment?" + menu_order;
+              window.location.href = url;
+            })
+  
+           
+            //ajax로 보내기
+  
+            function openDetail(value) {
+              var url = 'http://localhost:3000/payment?mid=' + value;
+  
+              window.location.href = url;
+            }
+          </script>
+     
+        <!-- End Right Column -->
+      </div>
+
+      <!-- End Grid -->
+    </div>
+
+    <!-- End Page Container -->
+  </div>
+
+  <footer class="w3-center w3-black w3-padding-16">
+    <!--<p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>-->
+    <p>Copyright (c) KISABUCKS All rights reserved. <br>본 사이트에서 사용된 리소스는 모두 오픈소스임을 밝힙니다</p>
+  </footer>
+
+</body>
+
+
+
+</html>

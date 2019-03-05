@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<title>인증완료</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+body,h1 {font-family: "Raleway", sans-serif}
+body, html {height: 100%}
+.bgimg {
+  background-color:#3f3931;
+  min-height: 100%;
+  background-position: center;
+  background-size: cover;
+}
+</style>
+<body>
+
+<div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+  <div class="w3-display-topleft w3-padding-large w3-xlarge">
+    인증완료
+  </div>
+  <div class="w3-display-middle">
+    <p class="w3-xlarge w3-animate-top" id="accessToken">accessToken : <%=authData.access_token%> </p>
+    <p class="w3-xlarge w3-animate-top" id="user_seq_no">user_seq_no : <%=authData.user_seq_no%> </p>
+    <hr class="w3-border-grey" style="margin:auto;width:100%">
+    <p class="w3-large w3-center">해당 사항을 복사하여 회원가입 창에 입력해주세요!</p>
+</div> 
+  </div>
+</div>
+
+</body>
+</html>
+
+
+    <script>
+        opener.document.getElementById("accessToken").value = document.getElementById("access_token").textContent;
+        opener.document.getElementById("refreshToken").value = document.getElementById("refresh_token").textContent
+        opener.document.getElementById("userNum").value = document.getElementById("user_seq_no").textContent
+    
+    //     $("#confirmBtn").click(function () {
+    //     opener.document.getElementById("accessToken").value = document.getElementById("accessToken").textContent;
+    //     opener.document.getElementById("refreshToken").value = document.getElementById("refresh_token").textContent
+    //     opener.document.getElementById("userNum").value = document.getElementById("user_seq_no").textContent
+    //
+    // })
+    </script>

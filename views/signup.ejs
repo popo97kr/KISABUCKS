@@ -1,0 +1,114 @@
+<html>
+   <script
+       src="https://code.jquery.com/jquery-2.2.4.js"
+       integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+       crossorigin="anonymous">
+   </script>
+   <head>
+		<meta charset="utf-8">
+		<title>회원가입</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<!-- MATERIAL DESIGN ICONIC FONT -->
+		<link rel="stylesheet" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+
+		<!-- STYLE CSS -->
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+
+	<body>
+
+		<div class="wrapper" style="background-image: url('images/bg-registration-form-1.jpg');">
+			<div class="inner">
+				<div class="image-holder">
+					<img src="images/registration-form-1.jpg" alt="">
+				</div>
+				<form action="">
+                    <h3>회원가입</h3>
+                    <input type="text" placeholder="이름" class="form-control" id= name>
+ 					<div class="form-wrapper">
+						<input type="text" placeholder="아이디" class="form-control" id= userID>
+						<i class="zmdi zmdi-account"></i>
+					</div>	
+					<div class="form-wrapper">
+						<input type="password" placeholder="Password" class="form-control" id = password>
+						<i class="zmdi zmdi-lock"></i>
+					</div>
+					<button id="authBtn" type="button">모바일 인증받기
+						<i class="zmdi zmdi-arrow-right"></i>
+					</button>
+					<br><br>
+					<div class="form-wrapper">
+						<input placeholder="할당된 Access Token" class="form-control" id = accessToken>
+						<i class="zmdi zmdi-lock"></i>
+					</div>
+					<div class="form-wrapper">
+						<input placeholder="할당된 이용자번호" class="form-control" id = userNum>
+						<i class="zmdi zmdi-lock"></i>
+					</div>
+					<button id="signupBtn" type="button">Register
+							<i class="zmdi zmdi-arrow-right"></i>
+					</button>
+				</form>
+			</div>
+		</div>
+		
+	</body>
+
+   <script>
+	$("#authBtn").click(function () {
+        invokeAuthorize()
+	})
+	
+       
+    $("#signupBtn").click(function(){
+		var inputname = $("#name").val();
+		var inputid = $("#userID").val();
+		var inputpw = $("#password").val();
+		   
+		var inputAT = $("#accessToken").val();
+		var inputNum = $("#userNum").val();
+		$.ajax({
+                url: '/register',
+                type: 'post',
+                dataType: 'json',
+                data: {
+					name : inputname,
+				    userID : inputid,
+				    password : inputpw,
+                    use_num : inputNum,
+                    accessToken : inputAT
+                },
+                success: function (data) {
+                    if(data == 1){
+						alert("회원가입완료");
+						window.location.href = "http://localhost:3000/"
+                    }
+                }
+			})
+		});
+
+
+		function invokeAuthorize(){
+			var qs =
+				"?response_type=code&"+
+				"client_id=l7xx4460923980ef49c5a21acfaa60559817&"+
+				"redirect_uri=http://localhost:3000/authResult&"+
+				"scope=login inquiry transfer&"+
+				"auth_type=0&"+
+				"invoke_type=ajax"
+
+           $.ajax({
+               url : 'https://testapi.open-platform.or.kr/oauth/2.0/authorize2' + qs,
+               type : 'get',
+               data : {},
+           }).done(function(result){
+               window.name = "parents";
+               var tmpwin = window.open("about:blank");
+               tmpwin.location.href = result.location
+               console.log(result)
+           })
+       }
+
+   </script>
+</html>

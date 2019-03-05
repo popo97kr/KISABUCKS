@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+		<script
+		src="https://code.jquery.com/jquery-2.2.4.js"
+		integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+		crossorigin="anonymous">
+	</script>
+<head>
+   <title>LOGIN</title>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1"> 
+   <link rel="icon" type="image/png" href="http://i.imgur.com/qTPWq63.jpg"/>
+   <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+   <link rel="stylesheet" type="text/css" href="fonts1/font-awesome-4.7.0/css/font-awesome.min.css">
+   <link rel="stylesheet" type="text/css" href="fonts1/Linearicons-Free-v1.0.0/icon-font.min.css">
+   <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">  
+   <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+   <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+   <link rel="stylesheet" type="text/css" href="css3/util.css">
+   <link rel="stylesheet" type="text/css" href="css3/main.css">
+</head>
+<body>
+   
+   <div class="limiter">
+      <div class="container-login100">
+         <div class="wrap-login100">
+            <form class="login100-form validate-form">
+				<img src = "images/logo169.jpg" width="320px" height="180px" style="padding-left:30px">
+               <span class="login100-form-title p-b-32">
+                  Account Login
+               </span>
+               
+               <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
+                  <input class="input100" type="text" placeholder="user id" id="id">
+                  <span class="focus-input100"></span>
+               </div>
+               <div class="wrap-input100 rs2-wrap-input100 validate-input m-b-20" data-validate="Type password">
+                  <input class="input100" type="password" id = "password" placeholder="Password">
+                  <span class="focus-input100"></span>
+               </div>
+               
+               <div class="container-login100-form-btn">
+                  <button id="loginBtn" type="button" class="login100-form-btn">
+                     <a font-size="20px">로그인</a>
+                  </button>
+               </div>
+
+               <div class="w-full text-center">
+                  <a href="signup" font-size="20px" color="black" style="text-align:center">
+                     <br>회원가입
+                  </a>
+			   </div>
+            </form>
+
+            <div class="login100-more" style="background-image: url(http://i.imgur.com/qTPWq63.jpg);"></div>
+         </div>
+      </div>
+   </div>
+
+
+   <script>
+      $("#loginBtn").click(function(){
+        var inputid = $("#id").val();
+        var inputpw = $("#password").val();
+         $.ajax({
+            url : '/logincheck',
+            type : 'post',
+            datatype : 'json',
+            data : {
+               userID : inputid,
+               password : inputpw              
+          },
+          success: function(data){
+             console.log(data);
+             if(data==1){
+               window.location.href = "http://localhost:3000/"
+             }
+          }
+         })
+      })
+ 
+   </script>
+ </html>
+
+
+</body>
+</html>
